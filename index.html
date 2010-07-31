@@ -1,0 +1,921 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+Name       : Tastelessly
+Description: A very light design suitable for community sites and blogs.
+Version    : 1.0
+Released   : 20080122
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Calera Dance Academy</title>
+        <meta name="keywords" content="dance, ballet, tap, jazz, gymnastics, cheer, hiphop, recital, classes, teachers, spring" />
+        <meta name="description" content="Calera Dance Academy, under the direction of Elizabeth M. Smith, focuses on quality technical training in all related dance forms. Students are exposed at an early age to a disciplined professional attitude. Self-discipline and dedication to work, along with a love and appreciation of dance as an art form, are nurtured in each child." />
+        <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+        <script src="Scripts/ui/jquery-1.2.6.js" type="text/javascript">
+        </script>
+        <script src="Scripts/ui/jquery.jfeed.pack.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            
+            $(document).ready(function(){
+                $("#menu li").click(function(){
+                    $("#menu li").removeClass("current_page_item");
+                    $(this).attr("class", "current_page_item");
+                    loadData(this);
+                });
+                $("#content").empty();
+                $("#sidebar1").css("visibility", "visible");
+                var mycal = $("#home").clone();
+                mycal.appendTo("#content");
+                $("h1.title").html("Home");
+                BuildAboutUs();
+                BuildInfo();
+            });
+            
+            function testUrl(x){
+                $("#menu li").removeClass("current_page_item");
+                //alert('You clicked:' + x);
+                if (x == 'teachers.html') {
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#teachers").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Teachers");
+                }
+                if (x == 'registernow.html') {
+                    $("#content").empty();
+                    //$("#content").css("width", "660px");
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#registernow").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Registration Information!");
+                }
+                if (x == 'fallclasses.html') {
+                    $("#content").empty();
+                    //$("#content").css("width", "425px");
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#fallclasses").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Fall Classes");
+                }
+                if (x == 'faq.html') {
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#faq").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Frequently Asked Questions");
+                }
+                if (x == 'history.html') {
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#history").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("History of CDA");
+                }
+                if (x == 'mission.html') {
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#mission").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Our Mission");
+                }
+                if (x == 'recital.html') {
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#recital").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Recital");
+                }
+                if (x == 'contactus.html') {
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#contactus").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Contact Us");
+                }
+                if (x == 'map.html') {
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "hidden");
+                    var mycal = $("#map").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Map");
+                }
+                if (x == 'zumba.html') {
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#zumba").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Zumba");
+                }
+            }
+            
+            function loadData(link){
+                //alert(link.id);
+                
+                if (link.id == 'Photos') {
+                    $("h1.title").html("Photos");
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#photos").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Photos");
+                    //getYahoo();
+                    //$("#feed").append("<h1>hey</h1>")
+                }
+                if (link.id == 'AboutUs') {
+                    //GoGetIt();
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#aboutus").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("About Us");
+                    //$("#feed").append("<h1>hey</h1>")
+                }
+                
+                if (link.id == 'Calendar') {
+                    //GoGetIt();
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "hidden");
+                    var mycal = $("#calendar").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Calendar");
+                    
+                    //$("#feed").append("<h1>hey</h1>")
+                }
+                
+                if (link.id == 'Home') {
+                    //GoGetIt();
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#home").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Home");
+                    //$("#feed").append("<h1>hey</h1>")
+                }
+                
+                if (link.id == 'Contact') {
+                    //GoGetIt();
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "visible");
+                    var mycal = $("#contactus").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Contact");
+                    //$("#feed").append("<h1>hey</h1>")
+                }
+                
+                if (link.id == 'Map') {
+                    //GoGetIt();
+                    $("#content").empty();
+                    $("#sidebar1").css("visibility", "hidden");
+                    var mycal = $("#map").clone();
+                    mycal.appendTo("#content");
+                    $("h1.title").html("Map");
+                    //$("#feed").append("<h1>hey</h1>")
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            
+            function BuildAboutUs(){
+            
+                jQuery(function(){
+                
+                    jQuery.getFeed({
+                        url: 'xml/rss-aboutus.xml',
+                        success: function(feed){
+                        
+                            var html = '';
+                            
+                            for (var i = 0; i < feed.items.length && i < 5; i++) {
+                            
+                                var item = feed.items[i];
+                                
+                                //<li><a href="#">Teachers</a></li>
+                                html += '<li>' +
+                                '<a href="#" onClick="testUrl(\'' +
+                                item.link +
+                                '\');">' +
+                                item.title +
+                                '</a>' +
+                                '</li>';
+                                
+                            }
+                            
+                            jQuery('#ulaboutus').empty();
+                            jQuery('#ulaboutus').append(html);
+                        }
+                    });
+                });
+                
+            }
+            
+            function BuildInfo(){
+            
+                jQuery(function(){
+                
+                    jQuery.getFeed({
+                        url: 'xml/rss-info.xml',
+                        success: function(feed){
+                        
+                            var html = '';
+                            
+                            for (var i = 0; i < feed.items.length && i < 5; i++) {
+                            
+                                var item = feed.items[i];
+                                
+                                //<li><a href="#">Teachers</a></li>
+                                html += '<li>' +
+                                '<a href="#" onClick="testUrl(\'' +
+                                item.link +
+                                '\');">' +
+                                item.title +
+                                '</a>' +
+                                '</li>';
+                                
+                            }
+                            
+                            jQuery('#ulinfo').empty();
+                            jQuery('#ulinfo').append(html);
+                        }
+                    });
+                });
+                
+            }
+            
+            function GoGetIt(){
+            
+                jQuery(function(){
+                
+                    jQuery.getFeed({
+                        url: '/xml/rss-aboutus.xml',
+                        success: function(feed){
+                        
+                            jQuery('#result').append('<h2>' +
+                            '<a href="' +
+                            feed.link +
+                            '">' +
+                            feed.title +
+                            '</a>' +
+                            '</h2>');
+                            
+                            var html = '';
+                            
+                            for (var i = 0; i < feed.items.length && i < 5; i++) {
+                            
+                                var item = feed.items[i];
+                                
+                                html += '<h3>' +
+                                '<a href="' +
+                                item.link +
+                                '">' +
+                                item.title +
+                                '</a>' +
+                                '</h3>';
+                                
+                                html += '<div class="updated">' +
+                                item.updated +
+                                '</div>';
+                                
+                                html += '<div>' +
+                                item.description +
+                                '</div>';
+                            }
+                            
+                            jQuery('#result').append(html);
+                        }
+                    });
+                });
+                
+            }
+        </script>
+        <script type="text/javascript">
+            
+            function getYahoo(){
+                //$.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20title%2Cabstract%20from%20search.news%20where%20query%3D%22recession%22&format=json&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=?",
+                //$.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20json%20where%20url%3D%22http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fbase%2Fuser%2Fcleetus%2Falbumid%2F5310621431978980865%3Falt%3Djson%26kind%3Dphoto%26hl%3Den_US%22&format=json&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=?",
+                $.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20json%20where%20url%3D%22http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fbase%2Fuser%2Fcda4unow%2Falbumid%2F5336313750477750705%3Falt%3Djson%26kind%3Dphoto%26hl%3Den_US%22&format=json&callback=?", function(data){
+                    $.each(data.query.results.json.feed.entry, function(){
+                        //$("#feed").append("<a href='" + this.media_group.media_thumbnail[0].url + "'>");
+                        var myimg = $("#large").clone();
+                        myimg.css("visibility", "visible");
+                        myimg.attr("src", this.media_group.media_thumbnail[0].url);
+                        //myimg.wrap("<a href='" + this.media_group.media_thumbnail[2].url + "'></a>");
+                        //myimg.animate({
+                        //    top: "10px"
+                        //}, 5000);
+                        //.css({ border: "solid 1", top: "10px" });
+                        var bigpic = this.media_group.media_thumbnail[2].url;
+                        myimg.hover(function(){
+                            $(this).fadeTo("slow", 0.33);
+                            $("#largeimage").attr("src", bigpic).css("visibility", "visible");
+                        }, function(){
+                            $(this).fadeTo("slow", 1);
+                        });
+                        myimg.wrap("<span class='imgwrap'></span>");
+                        myimg.appendTo("#feed");
+                        
+                        //$("#feed").append(myimg);
+                        //$("#feed").append("</a>");
+                    
+                        //$("#feed").append("<a href='" + this.media_group.media_thumbnail[2].url + "'>" + this.title._t + "</a><br>");
+                    });
+                });
+                //$("img").wrap("<a href='go.html'></a>");
+            
+            
+            }
+            
+            function viewlarge(imgentry){
+                $("#large").attr("src", imgentry.media_group.media_thumbnail[2].url);
+            }
+            
+            function viewempty(){
+                $("#large").attr("src", "n.jpg");
+            }
+            
+            //        $(document).ready(function() {
+            //            $("#divGo").click(function() {
+            //                getYahoo();
+            //            });
+            //            $("img").click(function() {
+            //                alert(this.src);
+            //            });
+            //            $("#img").hover(function() {
+            //                $(this).fadeOut("slow");
+            //            }, function() {
+            //                $(this).fadeIn("slow");
+            //            });
+            //        });
+        </script>
+    </head>
+    <body>
+        <!-- start header -->
+        <div id="header">
+            <div id="menu">
+                <ul>
+                    <li class="current_page_item" id="Home">
+                        <a href="#">Home</a>
+                    </li>
+                    <li id="AboutUs">
+                        <a href="#">About Us</a>
+                    </li>
+                    <li id="Contact">
+                        <a href="#">Contact</a>
+                    </li>
+                    <li id="Photos">
+                        <a href="#">Photos</a>
+                    </li>
+                    <li id="Calendar">
+                        <a href="#">Calendar</a>
+                    </li>
+                    <li id="Map">
+                        <a href="#">Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="search">
+                <form id="searchform" method="get" action="#">
+                    <fieldset>
+                        <input id="s" type="text" name="s" value="" class="text" /><input id="x" type="submit" value="Search" class="button" />
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div id="logo">
+            <h1><a href="index.html">Calera Dance Academy</a></h1>
+            <h2><i>dance like no one's watching</i>...</h2>
+        </div>
+        <!-- end header --><hr/><!-- start page -->
+        <div id="page">
+            <!-- start content -->
+            <div id="content">
+            </div>
+            <!-- end content --><!-- start sidebar one -->
+            <div id="sidebar1" class="sidebar">
+                <ul>
+                    <li id="recent-posts">
+                        <h2>Did You Know?</h2>
+                        <ul>
+                            <li>
+                                <h3><a href="#" onclick="testUrl('registernow.html');">Open House - Aug. 6th</a></h3>
+                                <p>
+                                   Couldn't make it for registration day?
+Come by and see the studio on
+<strong>Friday, August 6 from 2-7 pm</strong>. 
+You can register, purchase your dancewear and shoes
+and tour the new and improved studio.  
+Parents may still mail in their info to PO Box 383, Calera, AL  35040. 
+Remember classes begin August 16th and classes are filling up! 
+See you soon!  <a href="#" onclick="testUrl('registernow.html');">More&hellip;</a></p>
+                            </li>
+                            <li>
+                                <h3><a href="#" onclick="testUrl('registernow.html');">Register Now</a></h3>
+                                <p>
+                                    <!--Registration for the 2010-2011 school year is coming soon.  Call 668-7775 today to reserve a spot
+                                    in the class that best suits your child.-->Please call 205-668-7775 if you would like to request a registration packet. <a href="#" onclick="testUrl('registernow.html');">More&hellip;</a>
+                                </p>
+                            </li>
+                            <li>
+                                <h3><a href="#" onclick="testUrl('registernow.html');">Fall Classes 2010</a></h3>
+                                <p>
+                                    Classes begin on Monday, August 16, 2010. <a href="#" onclick="testUrl('registernow.html');">More&hellip;</a>
+                                </p>
+                            </li>
+                            <!--
+                            <li>
+                            <h3>
+                            <a href="http://www.onlinepictureproof.com/dontblink" target="_blank">Recital Photos Available!</a></h3>
+                            <p>
+                            Don't Blink Photography is now accepting orders for pictures taken at our Spring Recital held on
+                            May 16th at the Calera High School Auditorium.<a href="http://www.onlinepictureproof.com/dontblink" target="_blank">
+                            Click here for more information&hellip;</a></p>
+                            </li>
+                            -->
+                            <li>
+                                <h3><a href="#">Have Fun!</a></h3>
+                                <p>
+                                    While the intent of dance class is to teach structure and discipline, fun is also 
+                                    very important. We want the students to perfect their skills and most importantly,  
+                                    to have fun learning. <a href="#">More&hellip;</a>
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- end sidebar one --><!-- start sidebar two -->
+            <div id="sidebar2" class="sidebar">
+                <ul>
+                    <li>
+                        <h2>Info</h2>
+                        <ul id="ulinfo">
+                            <!--                        <li><a href="#">Summer Dance Camp</a></li>
+                            <li><a href="#">Fall Classes</a></li>
+                            <li><a href="#">Class Attire</a></li>
+                            <li><a href="#">Payment Options</a></li>
+                            <li><a href="#">Frequently Asked Questions</a></li>
+                            <li><a href="#">Recital</a></li>
+                            <li><a href="#">Special Dates</a></li>-->
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>About Us</h2>
+                        <ul id="ulaboutus">
+                            <!--                        <li><a href="#">Teachers</a></li>
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Mission</a></li>
+                            <li><a href="#">Contact</a></li>-->
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <div style="padding: 10px 0px 0px 10px" id="divSocial">
+                        <div id="social">
+                            <!-- AddThis Button BEGIN -->
+                            <div class="addthis_toolbox addthis_default_style">
+                                <a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bb56ced127ceb3b" class="addthis_button_compact">Share</a>
+                                <span class="addthis_separator">|</span>
+                                <a class="addthis_button_facebook"></a>
+                                <a class="addthis_button_myspace"></a>
+                                <a class="addthis_button_google"></a>
+                                <a class="addthis_button_twitter"></a>
+                            </div>
+                            <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bb56ced127ceb3b">
+                            </script>
+                            <!-- AddThis Button END -->
+                        </div>
+                        <div id="social2">
+                            <!--<a href="http://twitter.com/cda4unow" target="_blank"><img border="0" src="/images/twitter_1.png" /></a>--><a href="http://twitter.com/caleradance" target="_blank"><img border="0" src="/images/twitter_1.png" /></a><a href="http://www.facebook.com/group.php?v=info&ref=ts&gid=40887199032" target="_blank"><img border="0" src="/images/facebook.png" /></a>
+                        </div>
+                    </div>
+                </ul>
+            </div><!-- end sidebar two -->
+            <div style="clear: both;">
+                &nbsp;
+            </div>
+        </div>
+        <!-- end page --><hr/><!-- start footer -->
+        <div id="footer">
+            <p>
+                &copy;2009-2010 All Rights Reserved. &nbsp;&bull;&nbsp; <a href="http://www.caleradance.com/">Calera Dance Academy, Inc.</a>.
+            </p>
+        </div>
+        <!-- end footer -->
+        <div id="contentholder" style="position: absolute; top: -10000px;">
+            <div id="home" class="post">
+                <h1 class="title">Home</h1>
+                <p>
+                    <img border="1" src="images/home_liz.jpg" />
+                </p><h2 style="font-size:2em">Open House - August 6th</h2>
+                <h3><a target="_top" href="CDA-2010-2011-Schedule.pdf">Schedule</a> | <a target="_top" href="2010-Registration-Form.doc">Registration form</a>.</h3>
+                <p>
+                  
+                  Couldn't make it for registration day?
+Come by and see the studio on
+<strong>Friday, August 6 from 2-7 pm</strong>. 
+You can <a target="_top" href="2010-Registration-Form.doc">register</a>, purchase your dancewear and shoes
+and tour the new and improved studio.  
+</p><p>
+Parents may still mail in their info to <strong>PO Box 383, Calera, AL  35040.</strong> 
+<br><br>
+Remember classes begin August 16th and classes are filling up! 
+
+See you soon!
+<br>
+<br>
+
+                </p>
+                <p>
+                    See the 2010-2011 class <a target="_top" href="CDA-2010-2011-Schedule.pdf">schedule</a>
+                    and <a target="_top" href="2010-Registration-Form.doc">registration form</a>. If you are
+                    interested in receiving a registration packet in the mail and you are not currently
+                    enrolled, please call the studio at 205-668-7775 to get on our mailing list.
+                </p>
+                <h3>Phone:&nbsp; 205-668-7775
+                    <br/>
+                    Physical Address:&nbsp; 8251 Hwy 31, Calera, AL (note:  mail cannot be delivered to this address.)
+                    <br/>
+                    Mailing Address:&nbsp; PO Box 383, Calera, AL (note: please use this address to mail registration packets.)
+                </h3>
+                <!--<h1>Spring Recital 2010!</h1>
+                <h2>May 15th 2010</h2>
+                <h2>Time: 3:00 PM, Location: Calera High School Auditorium</h2>--><!--
+                <h2>
+                To order prints, visit <a target="_blank" href="http://www.onlinepictureproof.com/dontblink">
+                Don't Blink Photography</a>.</h2>
+                <br />
+                <p>
+                <strong></strong><a target="_blank" href="http://www.onlinepictureproof.com/dontblink/albums/events/28530/browse/">
+                Click here for a direct link.</a></strong></p>
+                -->
+                <div class="entry">
+                </div>
+            </div>
+            <div id="calendar" class="post">
+                <h1 class="title">Calendar</h1>
+                <p>
+                    <br/>
+                </p>
+                <iframe src="http://www.google.com/calendar/embed?showTitle=0&amp;height=540&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=08sjc6nf5p3c2ei7vg1v4kgmv4%40group.calendar.google.com&amp;color=%23A32929&amp;ctz=America%2FChicago" style="border: solid 1px #777" width="660" height="540" frameborder="0" scrolling="no">
+                </iframe>
+            </div>
+            <div id="photos" class="post">
+                <h1 class="title">Photos</h1>
+                <p>
+                  <embed type="application/x-shockwave-flash" src="http://picasaweb.google.com/s/c/bin/slideshow.swf" width="400" height="267" flashvars="host=picasaweb.google.com&hl=en_US&feat=flashalbum&RGB=0x000000&feed=http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2Fcda4unow%2Falbumid%2F5336313750477750705%3Falt%3Drss%26kind%3Dphoto%26hl%3Den_US" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+                  
+                </p>
+                <!--<br/>
+                <br/>
+                <div id="feed">
+                </div>
+                <br/>
+                <br/>
+                <div>
+                    <img src="images/spacer.gif" id="largeimage" style="padding-right: 50px;"/>
+                    <br/>
+                    <br/>
+                </div>
+                <img src="images/spacer.gif" width="40px" id="large" />--><!--
+                <h1>
+                Spring Recital 2009 Pictures</h1>
+                <h2>
+                Taken May 16th 2009</h2>
+                <h2>
+                at 5:00 PM in the Calera High School Auditorium
+                </h2>
+                <h2>
+                To order prints, visit <a target="_blank" href="http://www.onlinepictureproof.com/dontblink">
+                Don't Blink Photography</a>.</h2>
+                <br />
+                <p>
+                <strong></strong><a target="_blank" href="http://www.onlinepictureproof.com/dontblink/albums/events/28530/browse/">
+                Click here for a direct link.</a></strong></p>
+                -->
+            </div>
+            <div id="contactus" class="post">
+                <h1 class="title">Contact</h1>
+                <br/>
+                <h3>Phone:&nbsp; 205-668-7775
+                    <br/>
+                    Physical Address:&nbsp; 8251 Hwy 31, Calera, AL *
+                    <br/>
+                    Mailing Address:&nbsp; PO Box 383, Calera, AL
+                    
+                   <br/><br/>
+                   (* Note: Please address mail to the PO Box.  Mail cannot be delivered to the physical address.)
+                </h3>
+                <br/>
+                <iframe src="https://spreadsheets.google.com/embeddedform?key=rvo_koV0JZ4MhxqG7gkUb6Q" width="425" height="900" frameborder="0" marginheight="0" marginwidth="0">
+                    Loading...
+                </iframe>
+            </div>
+            <div id="map" class="post">
+                <h1 class="title">Map</h1>
+                <br/>
+                <iframe width="660" height="540" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?hl=en&amp;gl=us&amp;ptab=2&amp;ie=UTF8&amp;view=map&amp;msa=0&amp;msid=111264280037280211231.00044ec24e0a9ce8c0a1e&amp;ll=33.103235,-86.753068&amp;spn=0.004853,0.007296&amp;z=17&amp;output=embed">
+                </iframe>
+                <br/>
+                <small>
+                    View <a href="http://maps.google.com/maps/ms?hl=en&amp;gl=us&amp;ptab=2&amp;ie=UTF8&amp;view=map&amp;msa=0&amp;msid=111264280037280211231.00044ec24e0a9ce8c0a1e&amp;ll=33.103235,-86.753068&amp;spn=0.004853,0.007296&amp;z=17&amp;source=embed" style="color: #0000FF; text-align: left">Calera Dance Academy</a>
+                    in a larger map
+                </small>
+            </div>
+            <div id="teachers" class="post">
+                <h1 class="title">Teachers</h1>
+                <p>
+                    <strong>Elizabeth Moody Smith</strong>
+                </p>
+                <p>
+                    <p>
+                        <img style="float:left; padding-right: 10px; padding-bottom: 2px;" src="http://lh4.ggpht.com/_KrUepecb9Rc/Sg5lG6kqvPI/AAAAAAAAACQ/HMqo4chqovU/s288/STUDIO__132814.jpg">Elizabeth Moody Smith began her love of dance when she was five. It wasn’t long
+                        until she knew that dance would always be a part of her life. Growing up, she trained
+                        in ballet, jazz, tap, clogging, modern, gymnastics, and cheerleading. At the age
+                        of eight, she developed a special interest in ballet. She studied with Birmingham
+                        Southern College Dance Department, Alabama Ballet, Montgomery Ballet, Andalusia
+                        Ballet, and the Paris Opera Ballet. At the age of twelve, she was accepted to the
+                        Alabama School of Fine Arts and also auditioned and was accepted to the Joffrey
+                        Ballet in New York.
+                    </p>
+                    <p>
+                        During high school, Mrs. Smith was a member of the senior company with Andalusia
+                        Ballet. After graduating, she continued her dancing, competed and won the Miss University
+                        of West Alabama Pageant (preliminary to the Miss Alabama Pageant.) In 1995, she
+                        competed in the Miss Alabama Pageant.
+                    </p>
+                    <p>
+                        From an early age Mrs. Smith planned to open a dance studio.  After seven years of owning her own studio she has loved every minute of it.  "It's great to have a job that you love. Being a part of teaching our youth the art of dance is so rewarding."  Elizabeth moved to Calera in 2000 then to Columbiana in 2008.  She and her husband, Chris, have been married almost 13 years and are proud parents of Branson, age 4, and Berkeley who will be a year old in July.  Thank you all for another great year at CDA!!
+                    </p>
+                    <p>
+                        <strong>Natalie Hill</strong>
+                    </p>
+                    <p>
+                        <img style="float:left; padding-right: 10px; padding-bottom: 2px;" src="http://lh3.ggpht.com/_KrUepecb9Rc/Sg5lHrR2_NI/AAAAAAAAACY/ZQofxmzGrlA/s288/STUDIO__132564.jpg">Natalie Hill has been dancing since the age of seven. She began with Kathy Draper’s
+                        dance studio, and continued through the eighth grade. In ninth grade she made the
+                        cheerleading squad at Kingwood Christian School, in which time would not allow her
+                        to do both, however; cheering gave her the opportunity to continue dance during
+                        the cheer routines.
+                    </p>
+                    <p>
+                        Miss Hill is a graduate of the University of Montevallo, where she achieved a degree
+                        in retail merchandising, and a minor in business management. While attending Montevallo,
+                        Natalie was active on the Falconettes dance team, and served as captain for 2 years,
+                        and then went on to be there coach the following year. Natalie has been active through-out
+                        the community choreographing field routines, judging dance team try-outs, and helping
+                        young girls prepare for college and high school try-outs across the state.
+                    </p>
+                    <p>
+                        Natalie has enjoyed working and getting to know her students during her 5th year
+                        at CDA, and looks forward to next year. To my little ones “I am so proud of you
+                        all and love you more than you know.?
+                    </p>
+                    <p>
+                        <strong>Heather Hubbard</strong>
+                    </p>
+                    <p>
+                        <p><img style="float:left; padding-right: 10px; padding-bottom: 2px;" src="http://lh6.ggpht.com/_KrUepecb9Rc/Sg5lIK_fe3I/AAAAAAAAACc/1We-DQwuqYQ/s288/STUDIO__132565.jpg">
+Heather Hubbard began dancing at the age of three while residing in New York . Heather has studied and competed in jazz and tap under the direction of Dyan Mulvey and later studied jazz, tap, and ballet under the direction of Sylvia McDonald. Heather’s family moved to Alabama where she began dancing at the Dance Centre in Tuscaloosa and was a member of their jazz company. She was also a member of her high school’s dance team and was selected Captain. Heather was selected as an UDA All Star and American All Star, which allowed her the opportunity to perform in Paris, France on the Good Will Tour.
+</p><p>After high school, Heather attended UAB, where she was on the dance team and received a dance scholarship. Upon graduating from UAB with a BS in Management, Heather went on to pursue her Masters degree from Troy University.
+
+</p><p>She continues to choreograph for high school teams across the southeast. She also helps prepare students for high school and college dance team try-outs across the southeast.
+
+</p><p>She is an active member throughout the community. Heather currently serves on the Board of Directors for Hands on Birmingham and is an advocate for volunteering. Heather married her college sweetheart, John, in 2008 and they currently reside in Pelham.
+</p>                    <p>
+                        <strong>Lydia Dyer's biography</strong>
+                    </p>
+                    <p>
+                        Lydia transferred to the University of Montevallo from UA Huntsville in the fall of 2009.  She is studying Speech Language Pathology and Spanish.  Lydia is a member of the Golden Key, Phi Kappa Phi, and Sigma Alpha Pi honor societies.  Lydia received the Academic Excellence Scholarship at UA Huntsville. 
+                    </p>
+                    <p>
+                        Lydia taught ballet, modern, and tap for three years at Alabama Youth Ballet in Huntsville.  In 2007, she won the overall prize at the annual Panopoly choreography competition for her piece "Living the Dream." 
+                    </p>
+                    <p>
+                        During 2008-2009, Lydia worked as a behavioral therapist for Autistic and special needs children at Applied Behavioral Concepts Inc., (ABC) in Huntsville.  She created and taught a dance program for ABC's summer camps. 
+                    </p>
+                    <p>
+                        In high school, Lydia trained at the Harid Conservatory, a professional ballet boarding school in Boca Raton, FL.  She grew up in Huntsville dancing for Community Ballet and performing lead roles such as The Snow Queen and The Sugar Plum Fairy in The Nutcracker; Cinderella in Cinderella; Paquita in La Paquita; and Odette and The Black Swan in Swan Lake.  Lydia made a guest appearance as Louise in Carousel with Ars Nova School of Arts. 
+                    </p>
+                    <p>
+                        Lydia would like to extend her gratitude to Elizabeth Smith for giving her the exciting opportunity to join the CDA staff, and would also like to thank Heather Hubbard and Natalie Hill for being welcoming friends and co-workers.
+                    </p>
+                    </div>
+                    <div id="aboutus" class="post">
+                        <h1 class="title">About Us</h1>
+                        <h2>
+                            <u>
+                                Location:
+                            </u>&nbsp; Come see our location on the corner of Hwy 31 and Hwy
+                            25(old Limestone Spa and Boutique location) in downtown Calera.
+                        </h2>
+                        <h2>
+                            <u>
+                                Offering:
+                            </u>&nbsp; Ballet, Tap, Jazz, Hip Hop, and Gymnastics for Ages 2 to Adult
+                        </h2>
+                        <h2>
+                            <u>
+                                Phone:
+                            </u>&nbsp; 205-668-7775
+                        </h2>
+                    </div>
+                    <div id="registernow" class="post">
+                        <h1 class="title">Registration Information</h1>
+                        <p>
+                            <h3><a target="_top" href="CDA-2010-2011-Schedule.pdf">Schedule</a> | <a target="_top" href="2010-Registration-Form.doc">Registration form</a>.</h3>
+                        </p>
+                <p>
+                  
+                  Couldn't make it for registration day?
+Come by and see the studio on
+<strong>Friday, August 6 from 2-7 pm</strong>. 
+You can <a target="_top" href="2010-Registration-Form.doc">register</a>, purchase your dancewear and shoes
+and tour the new and improved studio.  
+</p><p>
+Parents may still mail in their info to <strong>PO Box 383, Calera, AL  35040.</strong> 
+<br><br>
+Remember classes begin August 16th and classes are filling up! 
+
+See you soon!
+<br>
+<br>
+
+                </p>
+                        <p>
+                            Please call 205-668-7775 if you would like to request a registration packet.  Registration packets will be mailed out in June 2010.  If you would like to go ahead and reserve a spot in a class you may mail in your information to:  Post Office Box 383, Calera, Alabama 35040 or come by and meet our staff and see our facility at our Registration Day held on Saturday, July 24, 2010 at the studio. 
+                        </p>
+                        <p>
+                            Classes begin on Monday, August 16, 2010
+                        </p>
+                        <p>
+                            Offering classes for ages 2
+                            <sup>
+                                *
+                            </sup>
+                            to adult
+                            <ul>
+                                <li>
+                                    Ballet
+                                </li>
+                                <li>
+                                    Jazz
+                                </li>
+                                <li>
+                                    Tap
+                                </li>
+                                <li>
+                                    Gymnastics
+                                </li>
+                                <li>
+                                    Hip Hop
+                                </li>
+                                <li>
+                                    Cheernastics and Tumbling
+                                </li>
+                            </ul>
+                            *(must be potty trained)
+                        </p>
+                        <p>
+                            Reserve your child's spot soon before classes fill up. 
+                        </p>
+                        <p>
+                            Click to download a <a target="_top" href="CDA-2010-2011-Schedule.pdf">schedule</a>
+                            or a <a target="_top" href="2010-Registration-Form.doc">registration form</a>.
+                        </p>
+                    </div>
+                    <div id="fallclasses" class="post">
+                        <h1 class="title">Fall Classes</h1>
+                        <p>
+                            Fall registration will be mailed out in June, 2010 to all students. These 
+                            packets will include 2010-2011 class <a target="_top" href="CDA-2010-2011-Schedule.pdf">schedules</a>
+                            and <a target="_top" href="2010-Registration-Form.doc">registration forms</a>. If you are
+                            interested in receiving a registration packet in the mail and you are notcurrently
+                            enrolled, please call the studio at 205-668-7775 to get on our mailing list.
+                        </p>
+                        <p>
+                            FALL REGISTRATION DATE
+                        </p>
+                        <p>
+                            Saturday, July 24, 2010 from 10-2 pm at the studio.  Classes begin on Monday, August 16, 2010.
+                        </p>
+                        <p>
+                            CALERA DANCE ACADEMY OFFERS:
+                        </p>
+                        <ul>
+                            <li>
+                                Family discounts 
+                            </li>
+                            <li>
+                                Returning student discounts 
+                            </li>
+                            <li>
+                                Small student/teacher class ratio for more individual attention 
+                            </li>
+                            <li>
+                                Convenient location 
+                            </li>
+                            <li>
+                                Modern classroom facility 
+                            </li>
+                            <li>
+                                Classes for ages 2 1/2 to adult 
+                            </li>
+                            <li>
+                                Highly experienced teachers 
+                            </li>
+                            <li>
+                                Parent Observation Weeks 
+                            </li>
+                            <li>
+                                Parent Observation Weeks 
+                            </li>
+                            <li>
+                                Summer Dance Camp 
+                            </li>
+                            <li>
+                                Participation in Calera City Christmas Parade 
+                            </li>
+                            <li>
+                                Group rates to attend Alabama Ballet’s "Nutcracker"? 
+                            </li>
+                            <li>
+                                Community Involvement 
+                            </li>
+                            <li>
+                                Extra community performance opportunities 
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="history" class="post">
+                        <h1 class="title">History</h1>
+                        <p>
+                            <img style="float:left; padding-right: 10px; padding-bottom: 2px;" src="http://lh6.ggpht.com/_KrUepecb9Rc/Sg5lzHK_DWI/AAAAAAAAADM/Fu9oqbKhvrA/s288/DSCF0013.JPG">In early 2000, Mrs. Smith moved to and fell in love with the town of Calera, Alabama.
+                            She soon realized Calera was a place in need of a convenient dance program since the
+                            town was growing so rapidly. With years of dance experience, little interest in
+                            climbing the corporate ladder, and timing on her side, she was able to open Calera
+                            Dance Academy at its first location in downtown Calera in Summer 2003.
+                        </p>
+                        <p>
+                            The first year was a success, but the location soon proved to be less than adequate.
+                            Growing steadily, she decided to move the studio to a larger location north of the
+                            new Walmart. With several well-educated and energetic dance instructors, the rosters
+                            continued to grow. After 4 years in that location the opportunity to move back downtown
+                            into a larger facility arose. In the summer of 2008, she relocated to her current
+                            facility. The building had the charm of a traditional "New York" style dance studio.
+                        </p>
+                        <p>
+                            She continues to be blessed with a professional staff who strive to offer the best
+                            quality dance instruction. Thanks to everyone who's contributed to making Calera
+                            Dance Academy a success!
+                        </p>
+                    </div>
+                    <div id="mission" class="post">
+                        <h1 class="title">Our Mission</h1>
+                        <h3>At Calera Dance Academy(CDA), our mission is to provide students with the environment
+                            and the opportunity to become disciplined in the art of dance.</h3>
+                    </div>
+                    <div id="recital" class="post">
+                        <h1 class="title">Recital</h1>
+                        <h1>Pictures of Spring Recital 2010!</h1>
+                        <p>
+                            Don't Blink Photography  -  View Recital Pics at <a href="http://www.onlinepictureproof.com/dontblink" target="_blank">www.onlinepictureproof.com/dontblink</a>
+                            <br>
+                            <br>
+                            Password - CDA
+                        </p>
+                        <!--<h2> Taken May 16th 2009</h2>
+                        <h2>at 5:00 PM in the Calera High School Auditorium</h2>
+                        <h2>To order prints, visit <a target="_blank" href="http://www.onlinepictureproof.com/dontblink">Don't Blink Photography</a>.</h2>
+                        <br/>
+                        <p>
+                        <strong></strong>
+                        <a target="_blank" href="http://www.onlinepictureproof.com/dontblink/albums/events/28530/browse/">Click here for a direct link.</a>
+                        </strong>
+                        </p>
+                        -->
+                    </div>
+                    <div id="faq" class="post">
+                        <h1 class="title">Frequently Asked Questions</h1>
+                        <p>
+                            Coming soon!
+                        </p>
+                    </div>
+                    <div id="zumba" class="post">
+                        <h1 class="title">Zumba</h1>
+                        <p>
+
+ 
+Zumba meets at the Calera Dance Academy studio on Mondays and Thursdays from 7-8 pm through August 15th.  A new schedule will begin after that.  Classes cost $7 per class or class cards can be purchased at a discounted price.  Come join the party!!!
+                        <br><br>
+                        To learn more about Zumba, click here:  
+                                                    <a href="http://www.suanneferguson.com/Zumba.html" target="_blank">Zumba Website</a>
+ 
+
+                        </p>
+                    </div>
+                </div>
+                </body>
+            </html>
